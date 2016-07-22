@@ -21134,16 +21134,36 @@
 	  function MovieContainer(props) {
 	    _classCallCheck(this, MovieContainer);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MovieContainer).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MovieContainer).call(this, props));
+	
+	    _this.state = { movie: {} };
+	    return _this;
 	  }
 	
 	  _createClass(MovieContainer, [{
+	    key: '_fetchMovie',
+	    value: function _fetchMovie(searchTerm) {
+	      var _this2 = this;
+	
+	      fetch('//www.omdbapi.com/?t=' + searchTerm + '&y=&plot=short&r=json').then(function (response) {
+	        return response.json();
+	      }).then(function (results) {
+	        console.log(results);
+	        _this2.setState = {
+	          movie: results
+	        };
+	      }).catch(function (ex) {
+	        console.log('parsing failed', ex);
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        'Hello WOrld'
+	        _react2.default.createElement(_movieSearch2.default, { search: this._fetchMovie.bind(this) }),
+	        _react2.default.createElement(_movie2.default, null)
 	      );
 	    }
 	  }]);
@@ -21157,7 +21177,7 @@
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21187,9 +21207,20 @@
 	  }
 	
 	  _createClass(MovieSearch, [{
-	    key: 'render',
+	    key: "_handleSearch",
+	    value: function _handleSearch(evt) {
+	      evt.preventDefault();
+	      this.props.search(this.refs.movieSearch.value);
+	    }
+	  }, {
+	    key: "render",
 	    value: function render() {
-	      return _react2.default.createElement('div', null);
+	      return _react2.default.createElement(
+	        "form",
+	        { onSubmit: this._handleSearch.bind(this) },
+	        _react2.default.createElement("input", { ref: "movieSearch", type: "search", placeholder: "Search for a movie" }),
+	        _react2.default.createElement("input", { type: "submit", value: "Search" })
+	      );
 	    }
 	  }]);
 	
