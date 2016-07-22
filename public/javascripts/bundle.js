@@ -21163,7 +21163,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_movieSearch2.default, { search: this._fetchMovie.bind(this) }),
-	        _react2.default.createElement(_movie2.default, null)
+	        _react2.default.createElement(_movie2.default, { result: this.state.movie })
 	      );
 	    }
 	  }]);
@@ -21265,7 +21265,17 @@
 	  _createClass(Movie, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement('div', null);
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'h3',
+	          null,
+	          ' ',
+	          this.props.result,
+	          ' '
+	        )
+	      );
 	    }
 	  }]);
 	

@@ -32,7 +32,7 @@ class MovieContainer extends React.Component {
     return (
       <div>
         <MovieSearch search={this._fetchMovie.bind(this)}/>
-        <Movie/>
+        <Movie result={this.state.movie}  />
       </div>
     );
   }
