@@ -9,15 +9,34 @@ class MovieContainer extends React.Component {
     super(props);
     this.state = {
       movie: {}
-    }
+    };
   }
 
+  _fetchMovie(searchTerm) {
+
+    fetch(`//www.omdbapi.com/?t=${searchTerm}&y=&plot=short&r=json`)
+        .then((response) => {
+          return response.json()
+        })
+        .then((result) => {
+          console.log(result)
+          // this.setState({
+          //   movie: result
+          // })
+        })
+        .catch((ex) => {
+          console.log('parsing failed', ex)
+        })
+    }
+
+  }
 
 
   render() {
     return (
       <div>
-        Movie Container works!
+        <MovieSearch search={this._fetchMovie.bind(this)}/>
+        <Movie />
       </div>
     );
   }
