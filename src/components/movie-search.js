@@ -19,6 +19,8 @@ class MovieSearch extends React.Component {
      document.getElementById("four").style.color = "#fff";
      document.getElementById("five").style.color = "#fff";
      document.getElementById("six").style.color = "#fff";
+     var x = document.getElementById("myAudio");
+     x.play();
   }
 
   render() {
