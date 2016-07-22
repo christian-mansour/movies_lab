@@ -21149,9 +21149,9 @@
 	        return response.json();
 	      }).then(function (results) {
 	        console.log(results);
-	        _this2.setState = {
+	        _this2.setState({
 	          movie: results
-	        };
+	        });
 	      }).catch(function (ex) {
 	        console.log('parsing failed', ex);
 	      });
@@ -21652,13 +21652,24 @@
 	      this.props.search(this.refs.movieSearch.value);
 	    }
 	  }, {
+	    key: "_changeBackground",
+	    value: function _changeBackground() {
+	      document.body.background = "http://i.giphy.com/xTiTnoHt2NwerFMsCI.gif";
+	      document.getElementById("one").style.color = "#fff";
+	      document.getElementById("two").style.color = "#fff";
+	      document.getElementById("three").style.color = "#fff";
+	      document.getElementById("four").style.color = "#fff";
+	      document.getElementById("five").style.color = "#fff";
+	      document.getElementById("six").style.color = "#fff";
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "form",
 	        { onSubmit: this._handleSearch.bind(this) },
 	        _react2.default.createElement("input", { ref: "movieSearch", type: "search", placeholder: "Search for a movie" }),
-	        _react2.default.createElement("input", { type: "submit", value: "Search" })
+	        _react2.default.createElement("input", { type: "submit", value: "search", onClick: this._changeBackground.bind(this) })
 	      );
 	    }
 	  }]);
@@ -21672,7 +21683,7 @@
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -21702,17 +21713,46 @@
 	  }
 	
 	  _createClass(Movie, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
+	        "div",
 	        null,
 	        _react2.default.createElement(
-	          'h3',
+	          "h3",
+	          { id: "five" },
+	          " ",
+	          this.props.result.Title,
+	          " "
+	        ),
+	        _react2.default.createElement(
+	          "ul",
 	          null,
-	          ' ',
-	          this.props.result,
-	          ' '
+	          _react2.default.createElement(
+	            "li",
+	            { id: "one" },
+	            "Genre: ",
+	            this.props.result.Genre
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            { id: "two" },
+	            "Actors: ",
+	            this.props.result.Actors
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            { id: "three" },
+	            "Release Date: ",
+	            this.props.result.Released
+	          ),
+	          _react2.default.createElement(
+	            "li",
+	            { id: "four" },
+	            "Imdb Rating: ",
+	            this.props.result.imdbRating,
+	            "/10"
+	          )
 	        )
 	      );
 	    }

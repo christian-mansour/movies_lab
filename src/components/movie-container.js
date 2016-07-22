@@ -19,9 +19,9 @@ class MovieContainer extends React.Component {
       })
       .then((results) => {
         console.log(results)
-        this.setState = {
+        this.setState({
           movie: results
-        }
+        })
       })
       .catch((ex) => {
         console.log('parsing failed', ex)
@@ -32,8 +32,8 @@ class MovieContainer extends React.Component {
   render() {
     return (
       <div>
-        <MovieSearch search={this._fetchMovie.bind(this)}/>
-        <Movie result={this.state.movie}/>
+        <MovieSearch search={this._fetchMovie.bind(this)} />
+        <Movie result={this.state.movie} />
       </div>
     );
   }

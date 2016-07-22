@@ -1,8 +1,22 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*color: #000;*/
+
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 a {
   color: #00B7FF;
+}
+
+li {
+  padding: 2% 0;
+  color: #000;
+  text-decoration: none;
+}
+
+.image {
+  background-image: url('http://i.giphy.com/xTiTnoHt2NwerFMsCI.gif');
 }
